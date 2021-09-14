@@ -1,31 +1,23 @@
+// Déclaration de variables
 let _id = [];
 let i = [];
+let cameras = [];
 
-
-
-
-// Récupérer les articles depuis l'API
+// Récupération des articles depuis l'API
 fetch("http://127.0.0.1:3000/api/cameras").then(response => {
     if(response.ok){
-        console.log('fetch response ok')
         return response.json()
     } else {
         alert.log("error")
     }
 })
 
-
-
-
-// Dispatcher les données de chaque produit (prix, nom...) dans le DOM
+// Dispatch des données de chaque produit (prix, nom...) dans le DOM
 .then(cameras => {
     let main = document.querySelector('main');
 
-    for (i = 0; i < cameras.length; i++) {
+    // for (i = 0; i < cameras.length; i++) {
     cameras.forEach((cameras, i) => {
-        // id
-        _id[i] = cameras._id;
-
         // container principal
         let allProductsDisplay = document.createElement("div");
         document.querySelector(".allproductsdisplay");
@@ -37,7 +29,7 @@ fetch("http://127.0.0.1:3000/api/cameras").then(response => {
         // lien vers le produit
         let link = document.createElement("a");
         allProductsDisplay.appendChild(link);
-        link.href = './html/product.html${_id[i]}';
+        link.href = `./html/product.html?id=${cameras._id}`
         link.classList.add("stretched-link");
 
         // container du produit
@@ -59,6 +51,5 @@ fetch("http://127.0.0.1:3000/api/cameras").then(response => {
         productCard.appendChild(h2);
     })   
 }
-console.log('loop ok')
-}
+// }
 )
