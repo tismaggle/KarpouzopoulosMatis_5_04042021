@@ -30,7 +30,6 @@ fetch("http://127.0.0.1:3000/api/cameras").then(response => {
         let link = document.createElement("a");
         allProductsDisplay.appendChild(link);
         link.href = `./html/product.html?id=${cameras._id}`
-        link.classList.add("stretched-link");
 
         // container du produit
         let productCard = document.createElement("div");
