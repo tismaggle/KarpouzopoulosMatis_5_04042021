@@ -16,7 +16,6 @@ fetch("http://127.0.0.1:3000/api/cameras").then(response => {
 .then(cameras => {
     let main = document.querySelector('main');
 
-    // for (i = 0; i < cameras.length; i++) {
     cameras.forEach((cameras, i) => {
         // container principal
         let allProductsDisplay = document.createElement("div");
@@ -49,6 +48,4 @@ fetch("http://127.0.0.1:3000/api/cameras").then(response => {
         h2.innerHTML = cameras.name;
         productCard.appendChild(h2);
     })   
-}
-// }
-)
+})

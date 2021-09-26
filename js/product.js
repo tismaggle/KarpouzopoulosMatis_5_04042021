@@ -22,9 +22,9 @@ const structureProduit = `
         <li>Prix : <span>${camera.price / 100} €</span></li>
     </ul>
     <form>
-        <label for="option_produit">Choisir l'option :</label>
+        <label for="option_produit">Choix de la lentille :</label>
         <select name="option_produit" id="option_produit">
-            <option value="option_1">
+            <option value="option_1">Type de lentille
                 ${camera.lenses.map(lense=>`<option value=${lense}>
                     ${lense}
                 </option>`)}
@@ -43,16 +43,21 @@ if(productImg && productImg.style) {
     productImg.style.width = '500px';
 }
 
-// Sélection de l'id du formulaire
-const idForm = document.getElementsByTagName('select');
-
-// Mettre le choix de l'utilisateur dans une variable
+// Sélection du bouton Ajouter au panier et récupération des valeurs du formulaire
+const btn_envoyerPanier = document.getElementsByTagName('button');
+btn_envoyerPanier.addEventListener("click", (event)=>{
+event.preventDefault();
+// Placement du choix de l'utilisateur dans une variable
 var choixForm = idForm.values;
 console.log(choixForm);
-
-
-// Sélection du bouton Ajouter au panier
-const btn_envoyerPanier = document.querySelector('#btn-envoyer');
-btn_envoyerPanier.addEventListener('click', (event)=>{
-    event.preventDefault()
+let optionsProduit = {
+name: `${camera.name}`,
+option_produit: choixForm,
+price: `${camera.price / 100} €`,
+};
+console.log(optionsProduit);
 })
+
+// Sélection de l'id du formulaire
+const idForm = document.querySelector('#option_produit');
+console.log(idForm);
